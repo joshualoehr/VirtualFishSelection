@@ -41,9 +41,9 @@ namespace FishEvolutionGenetic
             fishes = new List<Fish>();
 
             for (int i = 0; i < NumPopulation; i++)
-                fishes.Add(new Fish());
+                fishes.Add(new Fish("Fish" + i));
 
-            fishSelection = new FishSelect(FishSelect.TOP_3_SELECT);
+            fishSelection = new FishSelect(FishSelect.ROULETTE_SELECT);
 
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMilliseconds(1);

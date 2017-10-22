@@ -28,6 +28,8 @@ namespace FishEvolutionGenetic
 
         public static int InitialEnergy = 1000;
 
+        public String Name;
+
         public BackPropogationNetwork FishNeural;
 
         public FishChromozomes Chromozomes;
@@ -44,19 +46,22 @@ namespace FishEvolutionGenetic
         public delegate void FeedEventHandler(object sender, FeedEventArgs e);
         public event FeedEventHandler Feed;
 
-        public Fish(FishChromozomes chromozomes)
+        public Fish(FishChromozomes chromozomes, String name)
         {
             Chromozomes = chromozomes;
             FishNeural = new BackPropogationNetwork(Chromozomes.MentalChromozome);
             FishLearn = new FishEvolutionGenetic.FishLearn(this);
             Sensor = new FoodSensor(this);
+            Name = name;
             ResetFish();
 
             Feed += Fish_Feed;
         }
 
+        public Fish(FishChromozomes chromozomes) : this(chromozomes, "UnnamedFish") { }
+
  
-        public Fish()
+        public Fish(String name)
         {
             Chromozomes = new FishChromozomes();
             Chromozomes.PhysicalChromozome = FishChromozomes.InititizeFishPhysicalChromosome();
@@ -64,9 +69,15 @@ namespace FishEvolutionGenetic
             FishNeural = new BackPropogationNetwork(Chromozomes.MentalChromozome);
             FishLearn = new FishEvolutionGenetic.FishLearn(this);
             Sensor = new FoodSensor(this);
+            Name = name;
             ResetFish();
 
             Feed += Fish_Feed;
+        }
+
+        public override String ToString()
+        {
+            return Name;
         }
 
         void Fish_Feed(object sender, Fish.FeedEventArgs e)
