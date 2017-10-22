@@ -1,0 +1,31 @@
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\MainWindow.baml
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\MainWindow.g.cs
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\App.g.cs
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic_MarkupCompile.cache
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.g.resources
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.Properties.Resources.resources
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.csproj.GenerateResource.Cache
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\FishEvolutionGenetic.exe
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\FishEvolutionGenetic.pdb
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\NeuralClasses.dll
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\NeuralClasses.pdb
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.exe
+f:\visual studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.pdb
+F:\Visual Studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.csprojResolveAssemblyReference.cache
+I:\Visual Studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\FishEvolutionGenetic.exe
+I:\Visual Studio 2012\Projects\FishEvolutionGenetic\FishEvolutionGenetic\bin\Debug\NeuralClasses.dll
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\bin\Debug\FishEvolutionGenetic.exe
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\bin\Debug\FishEvolutionGenetic.pdb
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.csprojResolveAssemblyReference.cache
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\GraphWindow.baml
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\MainWindow.baml
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\GraphWindow.g.cs
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\MainWindow.g.cs
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\App.g.cs
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic_MarkupCompile.cache
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.g.resources
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.Properties.Resources.resources
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.csproj.GenerateResource.Cache
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.csproj.CoreCompileInputs.cache
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.exe
+C:\Users\Josh\Dropbox\CSCI 402\Assignment 1 - Sample Code\VirualFish\Code\FishEvolutionGenetic\obj\Debug\FishEvolutionGenetic.pdb
