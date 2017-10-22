@@ -57,6 +57,11 @@ namespace FishEvolutionGenetic
         {
             return new Fish(FishChromozomes.Mate(parent1.Chromozomes, parent2.Chromozomes));
         }
+
+        internal static Fish MateFish(Fish parent1, Fish parent2, string name)
+        {
+            return new Fish(FishChromozomes.Mate(parent1.Chromozomes, parent2.Chromozomes), name);
+        }
     }
 
     public interface ISelectStrategy
@@ -157,14 +162,41 @@ namespace FishEvolutionGenetic
 
     class RouletteSelect : ISelectStrategy
     {
+        private System.Random rand = new System.Random();
+
         public List<Fish> SelectFish(List<Fish> fish)
         {
-            throw new System.NotImplementedException();
+            int totalFood = fish.Sum(f => f.NumFoodEaten);
+            List<Fish> breedingPool = new List<Fish>(totalFood);
+            fish.ForEach(f => populateBreedingPool(breedingPool, f));
+            return breedingPool;
         }
 
         public void BreedFish(List<Fish> fish, List<Fish> selectedFish)
         {
-            throw new System.NotImplementedException();
+            int parentIdx1, parentIdx2;
+
+            for (int i = 0; i < fish.Count; i++)
+            {
+                parentIdx1 = rand.Next(0, selectedFish.Count);
+                do
+                {
+                    parentIdx2 = rand.Next(0, selectedFish.Count);
+                } while (parentIdx1 == parentIdx2);
+
+                Fish parent1 = selectedFish.ElementAt(parentIdx1);
+                Fish parent2 = selectedFish.ElementAt(parentIdx2);
+                fish[i] = FishSelect.MateFish(parent1, parent2, "Fish" + i);
+            }
+        }
+
+        private void populateBreedingPool(List<Fish> breedingPool, Fish fish)
+        {
+            int count = fish.NumFoodEaten;
+            for (int i = 0; i < count; i++)
+            {
+                breedingPool.Add(fish);
+            }
         }
     }
 
