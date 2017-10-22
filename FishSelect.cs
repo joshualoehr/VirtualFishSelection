@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,11 +54,6 @@ namespace FishEvolutionGenetic
         }
 
         // Convenience method for mating two fish
-        internal static Fish MateFish(Fish parent1, Fish parent2)
-        {
-            return new Fish(FishChromozomes.Mate(parent1.Chromozomes, parent2.Chromozomes));
-        }
-
         internal static Fish MateFish(Fish parent1, Fish parent2, string name)
         {
             return new Fish(FishChromozomes.Mate(parent1.Chromozomes, parent2.Chromozomes), name);
@@ -86,11 +82,11 @@ namespace FishEvolutionGenetic
             for (int i = 0; i < fish.Count; i++)
             {
                 if (i < fish.Count / 3)
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(1));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(1), "Fish"+i);
                 else if (i < fish.Count * 2 / 3)
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(2));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(2), "Fish" + i);
                 else
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(1), selectedFish.ElementAt(2));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(1), selectedFish.ElementAt(2), "Fish" + i);
             }
         }
     }
@@ -110,11 +106,11 @@ namespace FishEvolutionGenetic
             for (int i = 0; i < fish.Count; i++)
             {
                 if (i < fish.Count / 3)
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(1));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(1), "Fish" + i);
                 else if (i < fish.Count * 2 / 3)
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(2));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(0), selectedFish.ElementAt(2), "Fish" + i);
                 else
-                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(1), selectedFish.ElementAt(2));
+                    fish[i] = FishSelect.MateFish(selectedFish.ElementAt(1), selectedFish.ElementAt(2), "Fish" + i);
             }
         }
     }
@@ -137,7 +133,7 @@ namespace FishEvolutionGenetic
             for (int i = 0; i < fish.Count; i++)
             {
                 Fish[] pair = fishPairs.ElementAt(i % fishPairs.Count);
-                fish[i] = FishSelect.MateFish(pair[0], pair[1]);
+                fish[i] = FishSelect.MateFish(pair[0], pair[1], "Fish" + i);
             }
         }
 
@@ -202,14 +198,48 @@ namespace FishEvolutionGenetic
 
     class TournamentSelect : ISelectStrategy
     {
+        // Hyperparameter - tune this manually
+        private const int TOURNAMENT_SIZE = 2;
+
+        System.Random rand = new System.Random();
+
+        // Generate a list of parent fish by performing tournament selection
+        // twice for every fish in the population
         public List<Fish> SelectFish(List<Fish> fish)
         {
-            throw new System.NotImplementedException();
+            List<Fish> parents = new List<Fish>(2*fish.Count);
+            for (int i = 0; i < 2*fish.Count; i++)
+            {
+                parents.Add(tournamentSelect(fish));
+            }
+            return parents;
         }
 
+        // Mate parent fish which are adjacent within selectedFish
         public void BreedFish(List<Fish> fish, List<Fish> selectedFish)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < fish.Count; i++)
+            {
+                Fish parent1 = selectedFish.ElementAt(2*i);
+                Fish parent2 = selectedFish.ElementAt(2*i + 1);
+                System.Diagnostics.Debug.Write(String.Format("({0}, {1}) ", parent1, parent2));
+                fish[i] = FishSelect.MateFish(parent1, parent2, "Fish" + i);
+            }
+            System.Diagnostics.Debug.WriteLine("");
+        }
+
+        // Select the best fish out of a random sample of size TOURNAMENT_SIZE
+        private Fish tournamentSelect(List<Fish> population)
+        {
+            Fish bestFish = null;
+            for (int i = 0; i < TOURNAMENT_SIZE; i++)
+            {
+                int idx = rand.Next(0, population.Count);
+                Fish fish = population.ElementAt(idx);
+                if (bestFish == null || bestFish.NumFoodEaten < fish.NumFoodEaten)
+                    bestFish = fish;
+            }
+            return bestFish;
         }
     }
 

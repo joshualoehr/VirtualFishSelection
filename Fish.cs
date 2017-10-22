@@ -77,7 +77,7 @@ namespace FishEvolutionGenetic
 
         public override String ToString()
         {
-            return Name;
+            return String.Format("{0}[{1}]", Name, NumFoodEaten);
         }
 
         void Fish_Feed(object sender, Fish.FeedEventArgs e)
