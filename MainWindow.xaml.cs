@@ -21,8 +21,9 @@ namespace FishEvolutionGenetic
     /// </summary>
     public partial class MainWindow : Window
     {
-        int generation = 1;
-        public static int NumPopulation = 25;
+        int generation = 0;
+        public static int NumPopulation = 35;
+        public static int NumFood = 6;
 
         List<Fish> fishes;
         public static MainWindow Current;
@@ -72,7 +73,8 @@ namespace FishEvolutionGenetic
             int totalfood = 0;
             fishes.ForEach(r => totalfood += r.NumFoodEaten);
 
-            status_text_block.Text = "Generation: " + generation.ToString() + ", Total Food: " + totalfood.ToString();
+            status_text_block.Text = "Generation: " + generation + ", consumed " + totalfood + " food";
+            System.Diagnostics.Debug.WriteLine(status_text_block.Text);
             graphWindow.AddDataPoint(generation, totalfood);
         }
 
@@ -94,9 +96,8 @@ namespace FishEvolutionGenetic
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             foodgen = new FoodGenerator();
-            foodgen.AddFood();
-            foodgen.AddFood();
-            foodgen.AddFood();
+            for (int i = 0; i < NumFood; i++) 
+                foodgen.AddFood();
         }
 
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)

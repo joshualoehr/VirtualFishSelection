@@ -12,7 +12,6 @@ namespace FishEvolutionGenetic
         public const int ROULETTE_SELECT = 3;
         public const int TOURNAMENT_SELECT = 4;
         public const int STEADY_STATE_SELECT = 5;
-        public const int ELITISM_SELECT = 6;
 
         private ISelectStrategy SelectStrategy;
 
@@ -37,9 +36,6 @@ namespace FishEvolutionGenetic
                     break;
                 case STEADY_STATE_SELECT:
                     SelectStrategy = new SteadyStateSelect();
-                    break;
-                case ELITISM_SELECT:
-                    SelectStrategy = new ElitismSelect();
                     break;
                 default:
                     SelectStrategy = new Top3Select();
@@ -199,7 +195,7 @@ namespace FishEvolutionGenetic
     class TournamentSelect : ISelectStrategy
     {
         // Hyperparameter - tune this manually
-        private const int TOURNAMENT_SIZE = 2;
+        private const int TOURNAMENT_SIZE = 4;
 
         System.Random rand = new System.Random();
 
@@ -245,29 +241,53 @@ namespace FishEvolutionGenetic
 
     class SteadyStateSelect : ISelectStrategy
     {
+        Random rand = new Random();
+
+        // Hyperparameters - tune manually
+        private const int NUM_BREED = 5;
+        private const int NUM_REMOVE = 5;
+        private const bool USE_ELITISM = true;
+
+        // Select the top NUM_BREED fish from the population
         public List<Fish> SelectFish(List<Fish> fish)
         {
-            throw new System.NotImplementedException();
+            return fish.OrderByDescending(f => f.NumFoodEaten).Take(NUM_BREED).ToList();
         }
 
         public void BreedFish(List<Fish> fish, List<Fish> selectedFish)
         {
-            throw new System.NotImplementedException();
-        }
-    }
+            // Sort the population in ascending order, in place
+            fish.Sort((f1, f2) => f1.NumFoodEaten.CompareTo(f2.NumFoodEaten));
 
-    class ElitismSelect : ISelectStrategy
-    {
-        public List<Fish> SelectFish(List<Fish> fish)
+            // Replace worst NUM_REMOVE fish with offspring of the best
+            for (int i = 0; i < NUM_REMOVE; i++)
+            {
+                fish[i] = RandomMate(selectedFish, "Fish" + i);
+            }
+
+            // Mate remaining fish with themselves to allow for mutations
+            for (int j = NUM_REMOVE; j < fish.Count; j++)
+            {
+                // If using elitism, leave the top NUM_BREED fish untouched
+                if (j >= fish.Count - NUM_BREED && USE_ELITISM)
+                    break;
+                fish[j] = FishSelect.MateFish(fish[j], fish[j], "Fish" + j);
+            }
+        }
+
+        // Randomly select two fish from the breedingPool to produce an offspring
+        private Fish RandomMate(List<Fish> breedingPool, String name)
         {
-            throw new System.NotImplementedException();
-        }
+            int idx1 = rand.Next(0, breedingPool.Count);
+            int idx2;
+            do
+            {
+                idx2 = rand.Next(0, breedingPool.Count);
+            } while (idx1 == idx2);
 
-        public void BreedFish(List<Fish> fish, List<Fish> selectedFish)
-        {
-            throw new System.NotImplementedException();
+            Fish parent1 = breedingPool.ElementAt(idx1);
+            Fish parent2 = breedingPool.ElementAt(idx2);
+            return FishSelect.MateFish(parent1, parent2, name);
         }
-    }
-
-   
+    }   
 }
