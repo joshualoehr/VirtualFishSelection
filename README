@@ -1,0 +1,28 @@
+Survey of Selection Strategies in Virtual Fish
+Author: Josh Loehr
+
+This project is based on the originally submitted version at
+https://www.codeproject.com/Articles/1074915/AI-Genetic-Evolution-of-Virtual-Fish
+
+-------------------------------------------------------------------------------
+
+To run, execute Application/FishEvolutionGenetic.exe
+
+
+(Optional) Configure settings within code:
+
+   Edits must be made by opening the solution file Code/FishEvolutionGenetic.sln with Visual Studio.
+
+	1. Choose a Selection Strategy at MainWindow.xaml.cs:24 
+	    Options are:
+		FishSelect.TOP_3_SELECT
+        	FishSelect.BOTTOM_3_SELECT
+        	FishSelect.ABOVE_AVERAGE_SELECT
+        	FishSelect.ROULETTE_SELECT
+        	FishSelect.TOURNAMENT_SELECT
+        	FishSelect.STEADY_STATE_SELECT
+	2. If using Tournament Selection, configure the TOURNAMENT_SIZE hyperparameter at FishSelect.cs:231
+	3. If using Steady State Selection, configure NUM_BREED (FishSelect.cs:280) and NUM_REMOVE (FishSelect.cs:281)
+	4. If using Steady State Selection, toggle the use of Elitism at FishSelect.cs:282
+
+   If changes were made, rebuild the project and use the executable at bin/Debug/FishEvolutionGenetic.exe
