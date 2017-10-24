@@ -21,6 +21,8 @@ namespace FishEvolutionGenetic
     /// </summary>
     public partial class MainWindow : Window
     {
+	const int STRATEGY = FishSelect.STEADY_STATE_SELECT;
+
         int generation = 0;
         public static int NumPopulation = 35;
         public static int NumFood = 6;
@@ -44,7 +46,7 @@ namespace FishEvolutionGenetic
             for (int i = 0; i < NumPopulation; i++)
                 fishes.Add(new Fish("Fish" + i));
 
-            fishSelection = new FishSelect(FishSelect.TOURNAMENT_SELECT);
+            fishSelection = new FishSelect(STRATEGY);
 
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMilliseconds(1);

@@ -228,7 +228,7 @@ namespace FishEvolutionGenetic
     class TournamentSelect : ISelectStrategy
     {
         // Hyperparameter - tune this manually
-        private const int TOURNAMENT_SIZE = 4;
+        private const int TOURNAMENT_SIZE = 3;
 
         System.Random rand = new System.Random();
 
