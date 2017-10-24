@@ -1,3 +1,34 @@
+/* ************************************************************************* */
+/* Program: FishSelect.cs                                                    */
+/* Description: Provide various selection strategies for genetic algorithm   */
+/* Author: Josh Loehr                                                        */
+/* Last Date Modified: October 22, 2017                                      */
+/*                                                                           */
+/* NOTES:                                                                    */
+/* 1. Algorithms implemented (adapted from [2]):                             */
+/*     a. Top 3 Selection (Default)                                          */
+/*     b. Bottom 3 Selection                                                 */
+/*     c. Above Average Selection                                            */
+/*     d. Roulette Selection                                                 */
+/*     e. Tournament Selection                                               */
+/*     f. Steady State Selection                                             */
+/*     g. Steady State w/ Elitism                                            */
+/* 2. Hyperparameters:                                                       */
+/*     a. TOURNAMENT_SIZE (in TournamentSelect)                              */
+/*     b. NUM_BREED and NUM_REMOVE (in SteadyStateSelect)                    */
+/*     c. USE_ELITISM (in SteadyStateSelect)                                 */
+/* 3. This program is based on [1] with modifications on                     */
+/*    MainWindow.NextGeneration()                                            */
+/*                                                                           */
+/* References:                                                               */
+/* [1] User hemanthk119. AI: Genetic Evolution of Virtual Fish. Retrieved    */
+/*     October 23, 2017, from Code Project site:                             */
+/*     https://www.codeproject.com/Articles/1074915/AI-Genetic-Evolution-of- */
+/*     Virtual-Fish                                                          */
+/* [2] Stuart Russell and Peter Norvig, “Artificial Intelligence: A Modern   */
+/*     Approach”, Third Edition, Prentice Hall, 2010, 1132 pages             */
+/* ************************************************************************* */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,6 +187,7 @@ namespace FishEvolutionGenetic
     {
         private System.Random rand = new System.Random();
 
+	// Adds one instance of each Fish to the breedingPool for each food consumed
         public List<Fish> SelectFish(List<Fish> fish)
         {
             int totalFood = fish.Sum(f => f.NumFoodEaten);
@@ -164,6 +196,7 @@ namespace FishEvolutionGenetic
             return breedingPool;
         }
 
+	// Randomly selects from breeding pool
         public void BreedFish(List<Fish> fish, List<Fish> selectedFish)
         {
             int parentIdx1, parentIdx2;
