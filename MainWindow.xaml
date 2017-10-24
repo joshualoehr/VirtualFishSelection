@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FishEvolutionGenetic.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fish Genetic Evolution Simulation" Height="800" Width="1000" Loaded="Window_Loaded_1" Closing="Window_Closing_1"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Fish Genetic Evolution Simulation" Height="600" Width="600" Loaded="Window_Loaded_1" Closing="Window_Closing_1"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

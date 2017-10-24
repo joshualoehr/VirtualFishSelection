@@ -195,7 +195,7 @@ namespace FishEvolutionGenetic
     class TournamentSelect : ISelectStrategy
     {
         // Hyperparameter - tune this manually
-        private const int TOURNAMENT_SIZE = 4;
+        private const int TOURNAMENT_SIZE = 3;
 
         System.Random rand = new System.Random();
 
@@ -218,7 +218,6 @@ namespace FishEvolutionGenetic
             {
                 Fish parent1 = selectedFish.ElementAt(2*i);
                 Fish parent2 = selectedFish.ElementAt(2*i + 1);
-                System.Diagnostics.Debug.Write(String.Format("({0}, {1}) ", parent1, parent2));
                 fish[i] = FishSelect.MateFish(parent1, parent2, "Fish" + i);
             }
             System.Diagnostics.Debug.WriteLine("");

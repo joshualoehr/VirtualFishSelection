@@ -22,8 +22,8 @@ namespace FishEvolutionGenetic
     public partial class MainWindow : Window
     {
         int generation = 0;
-        public static int NumPopulation = 35;
-        public static int NumFood = 6;
+        public static int NumPopulation = 25;
+        public static int NumFood = 3;
 
         List<Fish> fishes;
         public static MainWindow Current;
